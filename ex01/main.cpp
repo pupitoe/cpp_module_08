@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 13:19:25 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/14 14:18:26 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:28:56 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	main(void)
 	sp.addNumber(9);
 	sp.addNumber(11);
 	std::cout << sp.shortestSpan() << std::endl;
-	//std::cout << sp.longestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
 	return (0);
 }

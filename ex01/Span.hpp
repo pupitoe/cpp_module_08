@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 13:07:10 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/14 14:22:19 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:03:34 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class	Span
 		Span& operator=(Span const& cpy);
 
 		std::vector<unsigned int>	entity;
+		unsigned int const			size;
+		unsigned int				current;
 
 		class ExeptionIsInList: public std::exception
 		{
@@ -45,6 +47,7 @@ class	Span
 
 		void 			addNumber(unsigned int entity);
 		unsigned int	shortestSpan(void);
+		unsigned int	longestSpan(void);
 };
 
 #endif

@@ -6,20 +6,21 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 13:06:50 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/14 14:20:47 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:39:21tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span(void)
+Span::Span(void): size(0)
 {
 	return ;
 }
 
-Span::Span(Span const& cpy)
+Span::Span(Span const& cpy): size(cpy.size)
 {
 	this->entity = cpy.entity;
+	this->current = cpy.current;
 	return ;
 }
 
@@ -33,9 +34,9 @@ Span::~Span(void)
 	return ;
 }
 
-Span::Span(unsigned int entity)
+Span::Span(unsigned int size): size(size)
 {
-	this->entity.push_back(entity);
+	this->current = 0;
 }
 
 const char	*Span::ExeptionIsInList::what(void) const throw()
@@ -52,6 +53,8 @@ void	Span::addNumber(unsigned int entity)
 {
 	std::vector<unsigned int>::iterator	it;
 
+	if (this->current == this->size)
+			throw	Span::ExeptionIsInList();
 	it = this->entity.begin();
 	while (it != this->entity.end())
 	{
@@ -60,24 +63,55 @@ void	Span::addNumber(unsigned int entity)
 		it++;
 	}
 	this->entity.push_back(entity);
+	this->current++;
 }
 
 unsigned int	Span::shortestSpan(void)
 {
 	unsigned int	min;
-	
+	unsigned int	buffer;
+	std::vector<unsigned int>::iterator	it_next;
+	std::vector<unsigned int>::iterator	it_main;
+
 	if (this->entity.capacity() < 2)
 		throw Span::ExeptionInvalidList();
 	min = UINT32_MAX;
-	for (std::vector<unsigned int>::iterator it_main = this->entity.begin();
-		it_main != this->entity.end(); it_main++)
+	it_next = this->entity.begin();
+	it_next++;
+	it_main = this->entity.begin();
+	while (it_next != this->entity.end())
 	{
-		for (std::vector<unsigned int>::iterator it_search =
-			this->entity.begin(); it_search != this->entity.end(); it_search++)
-		{
-			if (*it_search < *it_main && *it_main - *it_search < min)
-				min = *it_main - *it_search;
-		}
+		buffer = (*it_next > *it_main)? *it_next - *it_main :
+			*it_main - *it_next;
+		if (buffer < min)
+			min = buffer;
+		it_main++;
+		it_next++;
 	}
 	return (min);
+}
+
+unsigned int	Span::longestSpan(void)
+{
+	unsigned int	max;
+	unsigned int	buffer;
+	std::vector<unsigned int>::iterator	it_next; 
+	std::vector<unsigned int>::iterator	it_main; 
+	
+	if (this->entity.capacity() < 2)
+		throw Span::ExeptionInvalidList();
+	max = 0;
+	it_next = this->entity.begin();
+	it_next++;
+	it_main = this->entity.begin();
+	while (it_next != this->entity.end())
+	{
+		buffer = (*it_next > *it_main)? *it_next - *it_main :
+			*it_main - *it_next;
+		if (buffer > max)
+			max = buffer;
+		it_main++;
+		it_next++;
+	}
+	return (max);
 }
