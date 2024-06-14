@@ -39,9 +39,9 @@ Span::Span(unsigned int size): size(size)
 	this->current = 0;
 }
 
-const char	*Span::ExeptionIsInList::what(void) const throw()
+const char	*Span::ExeptionBadAddInList::what(void) const throw()
 {
-	return ("This element is in the list");
+	return ("Bad add in list");
 }
 
 const char	*Span::ExeptionInvalidList::what(void) const throw()
@@ -54,12 +54,15 @@ void	Span::addNumber(unsigned int entity)
 	std::vector<unsigned int>::iterator	it;
 
 	if (this->current == this->size)
-			throw	Span::ExeptionIsInList();
+			throw	Span::ExeptionBadAddInList();
 	it = this->entity.begin();
 	while (it != this->entity.end())
 	{
 		if (*it == entity)
-			throw	Span::ExeptionIsInList();
+		{
+			std::cerr << "it: " << *it << " number: " << entity << std::endl;
+			throw	Span::ExeptionBadAddInList();
+		}
 		it++;
 	}
 	this->entity.push_back(entity);
