@@ -14,7 +14,6 @@
 #include <ctime>
 #include <cstdlib>
 #include <cmath>
-#include <algorithm>
 
 int	main(void)
 {
