@@ -13,7 +13,6 @@
 #include "Span.hpp"
 #include <ctime>
 #include <cstdlib>
-#include <cmath>
 
 int	main(void)
 {
@@ -71,7 +70,7 @@ int	main(void)
 			try
 			{
 				buffer++;
-				more.addNumber((unsigned int)sqrt(std::rand() + i));
+				more.addNumber(static_cast<unsigned int>(std::rand() + i));
 				i++;
 			}
 			catch(const std::exception& )
