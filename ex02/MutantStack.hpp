@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 13:51:01 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/14 20:01:11 by tlassere         ###   ########.fr       */
+/*   Created: 2024/06/14 20:17:28 by tlassere          #+#    #+#             */
+/*   Updated: 2024/06/14 20:27:50 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef	MUTANTSTACK_HPP
+# define MUTANTSTACK_HPP
 
-#include <algorithm>
+# include <stack>
 
-template<typename T>
-typename T::iterator easyfind(T& container, int const value)
+template<typename T> class MutantStack: public std::stack<T>
 {
-	return (std::find(container.begin(), container.end(), value));
-}
+};
+
 
 #endif
