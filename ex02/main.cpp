@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 20:06:50 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/16 22:43:31 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/17 00:23:38 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 int	main(void)
 {
+	std::cout << "mutant stack" << std::endl;
 	MutantStack<int> mstack;
 	mstack.push(5);
 	mstack.push(17);
@@ -34,8 +35,8 @@ int	main(void)
 	--it;
 	while (it != ite)
 	{
-		std::cout << *it << std::endl;
-		++it;
+	std::cout << *it << std::endl;
+	++it;
 	}
 	std::stack<int> s(mstack);
 	return (0);
