@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 20:06:50 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/17 00:51:03 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/17 00:53:11 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	main(void)
 			std::cout << *it << std::endl;
 			++it;
 		}
+		std::stack<int> a(mstack);
 	}
 	{
 		std::cout << "List" << std::endl;
