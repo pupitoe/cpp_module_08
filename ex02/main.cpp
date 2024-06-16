@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 20:06:50 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/16 18:41:40 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/16 22:43:31 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,26 @@
 
 int	main(void)
 {
-	std::deque<std::string> hello;
-	MutantStack<int> ss;
-	MutantStack<int> ss2;
-	
-	ss2.t();
-	ss2.push(45);
-	ss.push(5);
-	ss.push(6);
-	std::cout << ss.top() << std::endl;
-	ss2 = ss;
-	ss2.t();
-
-	std::deque<std::string>::iterator abb = hello.end();
-	hello.push_back("hello");
-	abb++;
-	std::cout << *abb << std::endl;
-	abb--;
-	//hello.pop_back();
-	std::cout << *abb << std::endl;
-
-	MutantStack<int>::iterator bijour;
-	
-	
-	bijour = ss2.begin();
-	//while (bijour != ss2.end())
-	//{
-	//	std::cout << *bijour << std::endl;
-	//	bijour++;
-	//}
+	MutantStack<int> mstack;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	//[...]
+	mstack.push(0);
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+	std::stack<int> s(mstack);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 20:17:28 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/16 18:52:57 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/16 22:45:52 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,50 +21,66 @@
 template<typename T> class MutantStack: public std::stack<T>
 {
 	public:
-		class	iterator: public std::iterator
-		<
-			std::bidirectional_iterator_tag, // the category of iterator
-			T, // the type used
-			const T *, // the pointer returned
-			T // the reference returned
-		>
+		class	iterator: public std::deque<T>::iterator
 		{
-			private:
-				typename std::deque<T>::iterator	it;
-				//iterator::iterator(void);
-
-	
 			public:
-				iterator(typename std::deque<T>::iterator it);
+				iterator(void);
+				iterator(iterator const& it);
+				~iterator(void);
+				iterator& operator=(iterator const& it);
 		};
 
 		MutantStack(void);
 		~MutantStack(void);
 		MutantStack(MutantStack const& cpy);
 		MutantStack& operator=(MutantStack const& cpy);	
-		MutantStack::iterator	begin(void) const;
-		//iterator	end(void) const;
+		iterator	begin(void) const;
+		iterator	end(void) const;
 		void	t(void); // this is for test
 };
-
 
 template<typename T>
 typename MutantStack<T>::iterator MutantStack<T>::begin(void) const
 {
-	return (MutantStack<T>::iterator(this->c.begin()));
+	return (MutantStack<T>::iterator::iterator(this->c.begin()));
 }
 
-template<typename T> typename MutantStack<T>::iterator::iterator(typename std::deque<T>::iterator it) 
+template<typename T>
+typename MutantStack<T>::iterator MutantStack<T>::end(void) const
 {
-	this->it = iterator;
+	return (MutantStack<T>::iterator::iterator(this->c.end()));
 }
 
+template<typename T>
+MutantStack<T>::iterator::iterator(MutantStack<T>::iterator const& cpy):
+	std::deque<T>::iterator(cpy)
+{
+	*this = cpy;
+	return ;
+}
 
-//template<typename T>
-//typename MutantStack<T>::iterator MutantStack<T>::end(void) const
-//{
-//	return (this->c.end());
-//}
+template<typename T>
+typename MutantStack<T>::iterator&	MutantStack<T>::iterator::operator=(MutantStack<T>::iterator const& cpy)
+{
+	this->_M_cur = cpy._M_cur;
+	this->_M_first = cpy._M_first;
+	this->_M_last = cpy._M_last;
+	this->_M_node = cpy._M_node;
+	return (*this);
+}
+
+template<typename T>
+MutantStack<T>::iterator::iterator(void):
+	std::deque<T>::iterator()
+{
+	return ;
+}
+
+template<typename T>
+MutantStack<T>::iterator::~iterator(void)
+{
+	return ;
+}
 
 template<typename T> void MutantStack<T>::t(void)
 {
@@ -108,7 +124,6 @@ template<typename T> MutantStack<T>& MutantStack<T>::operator=(MutantStack const
 	catch(const std::exception&)
 	{
 	}
-
 	return (*this);
 }
 
