@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 20:17:28 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/17 00:30:49 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:28:50 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MUTANTSTACK_HPP
 
 # include <stack>
-# include <iterator>
 # include <algorithm>
 # include <deque>
 
@@ -35,6 +34,7 @@ template<typename T> class MutantStack: public std::stack<T>
 		~MutantStack(void);
 		MutantStack(MutantStack const& cpy);
 		MutantStack& operator=(MutantStack const& cpy);	
+
 		iterator	begin(void) const;
 		iterator	end(void) const;
 };
@@ -78,7 +78,7 @@ MutantStack<T>::iterator::~iterator(void)
 	return ;
 }
 
-
+// MutantStack
 
 template<typename T> MutantStack<T>::MutantStack(void)
 {
