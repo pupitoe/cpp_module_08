@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 13:07:10 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/14 19:39:25 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:54:22 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <vector>
 # include <iostream>
 # include <exception>
+# include <algorithm>
+# include <iterator>
 # define UINT32_MAX 4294967295U;
 
 class	Span
@@ -45,7 +47,10 @@ class	Span
 		Span(Span const& cpy);
 		~Span(void);
 
-		void 			addNumber(unsigned int entity);
+		void 	addNumber(unsigned int entity);
+		void	addRangeNumber(std::vector<unsigned int>::iterator begin,
+			std::vector<unsigned int>::iterator end);
+
 		unsigned int	shortestSpan(void);
 		unsigned int	longestSpan(void);
 };

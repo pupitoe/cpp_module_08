@@ -64,7 +64,7 @@ int	main(void)
 		i = 0;
 		buffer = 0;
 		std::srand(time(NULL));
-		while (i < 10000 && buffer < 1000)
+		while (i < 10000 && buffer < 10000)
 		{
 			buffer = 0;
 			try
@@ -79,6 +79,24 @@ int	main(void)
 		}
 		std::cout << "short: " << more.shortestSpan() << std::endl;
 		std::cout << "bigest: " << more.longestSpan() << std::endl;
+	}
+	{
+		std::vector<unsigned int> he;
+		Span	tom(12);
+
+		std::srand(time(NULL));
+		for (unsigned i = 0; i < 12; i++)
+			he.push_back(std::rand());
+		try
+		{
+			tom.addRangeNumber(he.begin(), he.end());
+			std::cout << "short: " << tom.shortestSpan() << std::endl;
+			std::cout << "bigest: " << tom.longestSpan() << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
 	return (0);
 }

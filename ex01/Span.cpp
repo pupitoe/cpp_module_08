@@ -55,16 +55,9 @@ void	Span::addNumber(unsigned int entity)
 
 	if (this->current == this->size)
 			throw	Span::ExeptionBadAddInList();
-	it = this->entity.begin();
-	while (it != this->entity.end())
-	{
-		if (*it == entity)
-		{
-			std::cerr << "it: " << *it << " number: " << entity << std::endl;
+	it = std::find(this->entity.begin(), this->entity.end(), entity);
+	if (it != this->entity.end())
 			throw	Span::ExeptionBadAddInList();
-		}
-		it++;
-	}
 	this->entity.push_back(entity);
 	this->current++;
 }
@@ -117,4 +110,37 @@ unsigned int	Span::longestSpan(void)
 		it_next++;
 	}
 	return (max);
+}
+
+static bool	ft_find_occurence(std::vector<unsigned int> const& container)
+{
+	bool	is_occurence;
+
+	is_occurence = false;
+	for (std::vector<unsigned int>::const_iterator it = container.begin();
+		it != container.end(); it++)
+	{
+		for (std::vector<unsigned int>::const_iterator itcmp = it + 1;
+			itcmp != container.end(); itcmp++)
+		{
+			if (*it == *itcmp)
+				is_occurence = true;
+		}
+	}
+	return (is_occurence);
+}
+
+void	Span::addRangeNumber(std::vector<unsigned int>::iterator begin,
+	std::vector<unsigned int>::iterator end)
+{
+	std::vector<unsigned int>	buffer;
+
+	buffer = this->entity;
+	std::copy(begin, end, std::back_inserter(buffer)); // to add in back list
+	if (buffer.size() > this->size)
+		throw	Span::ExeptionBadAddInList();
+	if (ft_find_occurence(buffer))
+		throw	Span::ExeptionBadAddInList();
+	this->current = buffer.size();
+	this->entity = buffer;
 }
