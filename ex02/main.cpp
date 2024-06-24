@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 20:06:50 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/17 15:43:05 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:31:57 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ int	main(void)
 		--it;
 		while (it != ite)
 		{
-		std::cout << *it << std::endl;
-		++it;
+			std::cout << *it << std::endl;
+			++it;
 		}
 		std::stack<int> s(mstack);
 	}

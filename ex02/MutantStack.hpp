@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 20:17:28 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/17 15:28:50 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:34:05 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,9 @@ template<typename T> MutantStack<T>::MutantStack(MutantStack const& cpy)
 template<typename T>
 MutantStack<T>& MutantStack<T>::operator=(MutantStack const& cpy)
 {
-	this->c.clear();
 	try
 	{
-		this->c.resize(cpy.size());
-		std::copy(cpy.c.begin(), cpy.c.end(), this->c.begin());
+		this->c = cpy.c;
 	}
 	catch(const std::exception&)
 	{
