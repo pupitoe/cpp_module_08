@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 20:06:50 by tlassere          #+#    #+#             */
-/*   Updated: 2024/06/24 10:31:57 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/06/24 13:58:33 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	main(void)
 		mstack.push(5);
 		mstack.push(17);
 		std::cout << "top: " << mstack.top() << std::endl;
-		//mstack.pop();
-		//std::cout << mstack.top() << std::endl;
 		std::cout << "size: " << mstack.size() << std::endl;
 		mstack.push(3);
 		mstack.push(5);
@@ -53,8 +51,6 @@ int	main(void)
 		mstack.push_back(5);
 		mstack.push_back(17);
 		std::cout << "top: " << mstack.back() << std::endl;
-		//mstack.pop();
-		//std::cout << mstack.top() << std::endl;
 		std::cout << "size: " << mstack.size() << std::endl;
 		mstack.push_back(3);
 		mstack.push_back(5);
